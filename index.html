@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hangman Game</title>
+</head>
+<body>
+	<div id="myDIV" onkeyup="myFunction()">Lets Play A Game </div>
+	<div> Guessed Letters:</div><!--Letters Alredy guessed -->
+	<div>Guesses Remaining: </div> <!--# of guesses left, must make sense with word length -->
+	<div>Wins:</div> <!--# of times user guessed correctly -->
+<script>
+	//Hiding text. 
+function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+
+</script>
+</body>
+</html>
