@@ -5,17 +5,18 @@
 	<title>Hangman Game</title>
 </head>
 <body>
-	<div id="myDIV" onkeyup="myFunction()">Lets Play A Game </div>
-	<div> Guessed Letters:</div><!--Letters Alredy guessed -->
-	<div>Guesses Remaining: </div> <!--# of guesses left, must make sense with word length -->
-	<div>Wins:</div> <!--# of times user guessed correctly -->
+	<div id="myDIV" onkeyup="hideMe()">Lets Play A Game </div>
+	<div id="under">_ _ _ _</div>
+	<div id="guesLet" > Guessed Letters:</div><!--Letters Alredy guessed -->
+	<div id="guesRemain">Guesses Remaining: </div> <!--# of guesses left, must make sense with word length -->
+	<div id="Wins">Wins:</div> <!--# of times user guessed correctly -->
 
   
 
 
 <script>
 	//Hiding text. 
-function myFunction() {
+function hideMe() {
     var x = document.getElementById("myDIV");
     if (x.style.display === "none") {
         x.style.display = "block";
@@ -25,22 +26,45 @@ function myFunction() {
 }
 // Letter Array with all letters. 
  var letters =  ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ];
- // Empty awnser array with _ for blanks. 
- var answerArray = [];
-
-	for (var i = 0; i < word.length; i++) {
-    answerArray[i] = "_";
-
-  }
-// The words to be guessed.
-var words =  ['sail', 'bats', 'cans'];  
+ // The words to be guessed.
+var words =  ['sail', 'bats', 'cans']; 
+// right letters
+var right = [];
+// wrong letters
+var wrong = [];
+// Array for _ markers
+var answerArray = [];
+// Choose a random word.  
 var word = words[Math.floor(Math.random() * words.length)];
-//
- for (remainingLetters > 0) {
-
-  
-
+console.log(words);
+console.log(word);
+ //Creating Underscores with word length. 
+ function anwserArray() {
+	for (var i = 0; i < word.length; i++) {
+    answerArray.push('_');
+  }
+  return answerArray;
+  console.log(answerArray);
 }
+
+  //return anwserArray; 
+// User Guess
+document.addEventListener('keypress', (event) => {
+	var keycode = event.keyCode;
+	var keyword = String.fromCharCode(keycode);
+	console.log(word.indexOf(keyword));
+// if guess is right 
+	if (keyword.indexOf(word) > -1) {
+		right.push(keyword);
+		console.log(right);
+	}
+	
+});
+
+
+// Right Guess
+
+// Wrong Gues
 
 
 </script>
