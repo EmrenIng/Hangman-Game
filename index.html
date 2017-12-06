@@ -3,9 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Hangman Game</title>
-</head>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	</head>
 <body>
-	<div id="myDIV">Lets Play A Game </div>
+	<div id="myDIV" onkeydown="myFunction()">Lets Play A Game </div>
 	<div id="under">_ _ _ _</div>
 	<div id="guesLet" >Guessed Letters: </div><!--Letters Alredy guessed -->
 	<div id="guesRemain">Guesses Remaining: </div> <!--# of guesses left, must make sense with word length -->
@@ -19,8 +21,9 @@
 
    
 	//Hiding text. 
+function myFunction(){
 document.getElementById("myDIV").innerHTML = " ";
-
+}
  // The words to be guessed.
 var words =  ['sail', 'bats', 'cans']; 
 // right letters
@@ -112,5 +115,6 @@ document.getElementById("loss").innerHTML = "Loses: " + loss;
 
 
 </script>
+<!-- <script src="assets/javascript/game.js"></script> -->
 </body>
 </html>
