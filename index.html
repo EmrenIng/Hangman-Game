@@ -24,8 +24,7 @@ function hideMe() {
         x.style.display = "none";
     }
 }
-// Letter Array with all letters. 
- var letters =  ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ];
+
  // The words to be guessed.
 var words =  ['sail', 'bats', 'cans']; 
 // right letters
@@ -33,32 +32,35 @@ var right = [];
 // wrong letters
 var wrong = [];
 // Array for _ markers
-var answerArray = [];
+var anArray = [];
 // Choose a random word.  
 var word = words[Math.floor(Math.random() * words.length)];
 console.log(words);
 console.log(word);
- //Creating Underscores with word length. 
- function anwserArray() {
-	for (var i = 0; i < word.length; i++) {
-    answerArray.push('_');
-  }
-  return answerArray;
-  console.log(answerArray);
-}
 
-  //return anwserArray; 
+ //Creating Underscores with word length. 
+	for (var i = 0; i < word.length; i++) {
+    	anArray.push('_'); 
+  	}
+   console.log(anArray);
+ 
+ 
 // User Guess
 document.addEventListener('keypress', (event) => {
 	var keycode = event.keyCode;
 	var keyword = String.fromCharCode(keycode);
+	var keynote = word.indexOf(keyword);
 	console.log(word.indexOf(keyword));
+	console.log(keyword);
 // if guess is right 
-	if (keyword.indexOf(word) > -1) {
+	if (keynote > -1) {
 		right.push(keyword);
 		console.log(right);
 	}
-	
+	else {
+		wrong.push(keyword);
+		console.log(wrong);
+	}
 });
 
 
