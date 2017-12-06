@@ -7,7 +7,7 @@
 <body>
 	<div id="myDIV" onkeyup="hideMe()">Lets Play A Game </div>
 	<div id="under">_ _ _ _</div>
-	<div id="guesLet" > Guessed Letters:</div><!--Letters Alredy guessed -->
+	<div id="guesLet" >Guessed Letters: </div><!--Letters Alredy guessed -->
 	<div id="guesRemain">Guesses Remaining: </div> <!--# of guesses left, must make sense with word length -->
 	<div id="Wins">Wins:</div> <!--# of times user guessed correctly -->
 
@@ -15,15 +15,10 @@
 
 
 <script>
+
+   
 	//Hiding text. 
-function hideMe() {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
+document.getElementById("myDIV").innerHTML = " ";
 
  // The words to be guessed.
 var words =  ['sail', 'bats', 'cans']; 
@@ -33,6 +28,8 @@ var right = [];
 var wrong = [];
 // Array for _ markers
 var anArray = [];
+// Guess numbers
+var lives = 10; 
 // Choose a random word.  
 var word = words[Math.floor(Math.random() * words.length)];
 console.log(words);
@@ -42,6 +39,7 @@ console.log(word);
 	for (var i = 0; i < word.length; i++) {
     	anArray.push('_'); 
   	}
+
    console.log(anArray);
  
  
@@ -52,21 +50,40 @@ document.addEventListener('keypress', (event) => {
 	var keynote = word.indexOf(keyword);
 	console.log(word.indexOf(keyword));
 	console.log(keyword);
-// if guess is right 
+// Player gueses. Sorting letters in right n wrong. 
 	if (keynote > -1) {
 		right.push(keyword);
 		console.log(right);
+//Replacing _ with the right letter. 
+		anArray[word.indexOf(keyword)] = keyword;
+		console.log(anArray);
+// Using join to turn array into string then seeing if it matches the word to create win condition. 
+		if (anArray.join('') === word) {
+			alert("you win");
+			
+
+		}
 	}
 	else {
 		wrong.push(keyword);
 		console.log(wrong);
+		lives--;
+		console.log(lives);
+		 if (lives === 0) {document.write("over")}
+	
 	}
+
+document.getElementById("under").innerHTML = anArray;
+document.getElementById("guesLet").innerHTML = "Guessed Letters:" + wrong + right;
+document.getElementById("guesRemain").innerHTML = "Guesses Remaining:" + lives;
+
+
 });
 
 
-// Right Guess
+// Count Wins
 
-// Wrong Gues
+// Create an amount of gueses. 
 
 
 </script>
